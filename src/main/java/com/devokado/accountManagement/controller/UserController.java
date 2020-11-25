@@ -1,16 +1,15 @@
 package com.devokado.accountManagement.controller;
 
-import com.devokado.accountManagement.model.request.*;
-import com.devokado.accountManagement.repository.ProfileRepository;
+import com.devokado.accountManagement.model.User;
+import com.devokado.accountManagement.model.response.StatusResponse;
 import com.devokado.accountManagement.service.UserService;
-import com.devokado.accountManagement.util.LocaleHelper;
 import lombok.val;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.oauth2.common.OAuth2AccessToken;
+import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
@@ -28,50 +27,31 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    private ProfileRepository profileRepository;
-
-    @Autowired
-    Environment environment;
-
-    @Autowired
-    LocaleHelper localeHelper;
+    private TokenStore tokenStore;
 
     /**
      * Register user with personal data
      */
     @PostMapping("/register")
-    public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest user) {
-//        try {
-//            StatusResponse statusResponse = userService.createUserInKeycloak(user);
-//            return ResponseEntity.status(statusResponse.getStatus())
-//                    .contentType(MediaType.valueOf(MediaType.APPLICATION_JSON_VALUE))
-//                    .body(statusResponse);
-//        } catch (NoSuchElementException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-//        }
-    }
-
-
-    /**
-     * Login with username or email
-     */
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest request) {
+    public ResponseEntity<?> register(@Valid @RequestBody User user) {
         try {
-            val token = userService.login(request);
-            return ResponseEntity.ok()
-                    .contentType(MediaType.valueOf(MediaType.APPLICATION_JSON_VALUE))
-                    .body(token);
+            User user1 = userService.create(user);
+            return ResponseEntity.ok(user1);
         } catch (NoSuchElementException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
+    @GetMapping("/test")
+    public ResponseEntity<?> test() {
+        return ResponseEntity.ok(new StatusResponse(200, "this is home"));
+    }
+
     /**
      * Login with mobile
      */
-    @PostMapping("/otp")
-    public ResponseEntity<?> otp(@Valid @RequestBody OtpRequest request) {
+//    @PostMapping("/otp")
+//    public ResponseEntity<?> otp(@Valid @RequestBody OtpRequest request) {
 //        try {
 //            if (Validate.isValidMobile(request.getMobile())) {
 //                //todo save otpcode,mobile and expiretime in user credential or a DB
@@ -82,7 +62,7 @@ public class UserController {
 //                profile.setExpireTime(Long.parseLong(Objects.requireNonNull(environment.getProperty("otp.code.expiretime"))) + System.currentTimeMillis());
 //                profileRepository.save(profile);
 //                SendResult result = userService.sendSMS(code, request.getMobile());
-                return ResponseEntity.ok().build();
+//        return ResponseEntity.ok().build();
 //            } else
 //                return ResponseEntity.ok(new StatusResponse(200, localeHelper.getString("invalidMobile")));
 //        } catch (HttpException ex) {
@@ -92,13 +72,13 @@ public class UserController {
 //            logger.error("ApiException  : " + ex.getMessage());
 //            return ResponseEntity.status(ex.getCode().getValue()).build();
 //        }
-    }
+//    }
 
     /**
      * Otp verification and get token
      */
-    @PostMapping("/otp-verification")
-    public ResponseEntity<?> otpVerification(@RequestBody OtpVerificationRequest request) {
+//    @PostMapping("/otp-verification")
+//    public ResponseEntity<?> otpVerification(@RequestBody OtpVerificationRequest request) {
 //        //todo find code and mobile in DB
 //        Profile profile = profileRepository.findByMobileAndCode(request.getMobile(), request.getCode());
 //        if (profile != null) {
@@ -133,68 +113,54 @@ public class UserController {
 //            }
 //        } else
 //            return ResponseEntity.ok(new StatusResponse(200, localeHelper.getString("usernameNotFound")));
-        return ResponseEntity.ok().build();
-    }
+//        return ResponseEntity.ok().build();
+//    }
 
     /**
-     * Get access again with refresh token
+     * Logout user and expire user tokens
      */
-    @PostMapping("/refreshtoken")
-    public ResponseEntity<?> refreshToken(@RequestBody RefreshTokenRequest request) {
+    @GetMapping("/logout")
+    public ResponseEntity<?> logout(HttpServletRequest request) {
         try {
-            val token = userService.refreshToken(request.getRefresh_token());
-            return ResponseEntity.ok()
-                    .contentType(MediaType.valueOf(MediaType.APPLICATION_JSON_VALUE))
-                    .body(token);
+            String authHeader = request.getHeader("Authorization");
+            if (authHeader != null) {
+                String tokenValue = authHeader.replace("Bearer", "").trim();
+                OAuth2AccessToken accessToken = tokenStore.readAccessToken(tokenValue);
+                tokenStore.removeAccessToken(accessToken);
+            }
+            return ResponseEntity.noContent().build();
         } catch (NoSuchElementException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
     /**
-     * Logout user and expire user tokens
-     */
-    @RolesAllowed("user")
-    @PostMapping("/logout")
-    public ResponseEntity<?> logout(HttpServletRequest request, @RequestHeader(value = "Authorization") String token) {
-//        try {
-////            request.logout();
-//            String[] jwt = token.split(" ");
-//            AccessToken accessToken = TokenVerifier.create(jwt[1], AccessToken.class).getToken();
-//            String userId = accessToken.getSubject();
-//            userService.logoutUser(userId);
-            return ResponseEntity.noContent().build();
-//        } catch (NoSuchElementException | VerificationException e) {
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-//        }
-    }
-
-    /**
      * Reset user password
      */
-    @RolesAllowed("user")
-    @PostMapping("/update/password")
-    public ResponseEntity<?> resetPassword(@RequestHeader(value = "Authorization") String token,
-                                           @RequestBody ResetPasswordRequest model) {
+//    @RolesAllowed("user")
+//    @PostMapping("/update/password")
+//    public ResponseEntity<?> resetPassword(@RequestHeader(value = "Authorization") String token,
+//                                           @RequestBody ResetPasswordRequest model) {
 //        try {
 //            AccessToken accessToken = userService.tokenParser(token);
 //            userService.resetPassword(accessToken.getSubject(), model.getNewPassword());
-            return ResponseEntity.ok().build();
+//        return ResponseEntity.ok().build();
 //        } catch (NoSuchElementException e) {
 //            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 //        }
-    }
+//    }
 
     /**
      * Update user data
      */
-    @RolesAllowed("user")
-    @PutMapping("/update/user")
-    public ResponseEntity<?> update(@RequestHeader(value = "Authorization") String token,
-                                    @Valid @RequestBody RegisterRequest registerRequest) {
+//    @RolesAllowed("user")
+//    @PutMapping("/update/user")
+//    public ResponseEntity<?> update(@RequestHeader(value = "Authorization") String token,
+//                                    @Valid @RequestBody RegisterRequest registerRequest) {
 //        AccessToken accessToken = userService.tokenParser(token);
 //        userService.updateUserInKeycloak(accessToken.getSubject(), registerRequest);
-        return ResponseEntity.ok()
-                .contentType(MediaType.valueOf(MediaType.APPLICATION_JSON_VALUE)).build();
-    }
+//        return ResponseEntity.ok()
+//                .contentType(MediaType.valueOf(MediaType.APPLICATION_JSON_VALUE)).build();
+//    }
+
 }

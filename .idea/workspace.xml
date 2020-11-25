@@ -9,15 +9,49 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
     </expand>
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7108848-e8cd-4302-9d6f-875991e35b23" name="Default Changelist" comment="" />
+    <list default="true" id="1e98884a-a533-49b7-a111-a0a495fa44bc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/devokado/accountManagement/config/OAuth2Configuration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/devokado/accountManagement/config/SecurityConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/devokado/accountManagement/model/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/devokado/accountManagement/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/devokado/accountManagement/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/devokado/accountManagement/service/CustomUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HELP.md" beforeDir="false" afterPath="$PROJECT_DIR$/HELP.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mesghal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/accountManagement.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/devokado/accountManagement/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/devokado/accountManagement/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/devokado/accountManagement/config/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/devokado/accountManagement/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/devokado/accountManagement/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/devokado/accountManagement/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/devokado/accountManagement/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -25,11 +59,14 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+        <option name="mavenHome" value="$USER_HOME$/.m2/wrapper/dists/apache-maven-3.6.3-bin/1iopthnavndlasol9gbrbg6bf2/apache-maven-3.6.3" />
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectId" id="1kZDForjnGOO1fYv8MiQuuYn7Am" />
+  <component name="ProjectId" id="1kbhGSckyHPOSxPEc7KUxfS5rbz" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -45,23 +82,25 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.devokado.accountManagement.service" />
-      <recent name="com.devokado.accountManagement.controller" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d7108848-e8cd-4302-9d6f-875991e35b23" name="Default Changelist" comment="" />
-      <created>1605899120246</created>
+      <changelist id="1e98884a-a533-49b7-a111-a0a495fa44bc" name="Default Changelist" comment="" />
+      <created>1605975104947</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1605899120246</updated>
-      <workItem from="1605899121442" duration="412000" />
-      <workItem from="1605899791066" duration="2730000" />
+      <updated>1605975104947</updated>
+      <workItem from="1605975106634" duration="1240000" />
+      <workItem from="1605976358951" duration="6406000" />
+      <workItem from="1606156443119" duration="1968000" />
+      <workItem from="1606289044262" duration="26460000" />
     </task>
     <servers />
   </component>
@@ -81,21 +120,17 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="309" y="478" width="1302" height="158" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1605900426346">
-      <screen x="0" y="27" width="3840" height="1053" />
+    <state x="768" y="261" width="374" height="592" key="#com.intellij.ide.util.MemberChooser" timestamp="1606292566764">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="309" y="478" width="1302" height="158" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.27.3840.1053@0.27.3840.1053" timestamp="1605900426346" />
-    <state x="661" y="421" width="597" height="279" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1605900404977">
-      <screen x="0" y="27" width="3840" height="1053" />
+    <state x="768" y="261" width="374" height="592" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1606292566764" />
+    <state x="743" y="311" width="424" height="491" key="FileChooserDialogImpl" timestamp="1606157955949">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="661" y="421" width="597" height="279" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.27.3840.1053@0.27.3840.1053" timestamp="1605900404977" />
-    <state x="693" y="302" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605900487033">
-      <screen x="0" y="27" width="3840" height="1053" />
+    <state x="743" y="311" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1606157955949" />
+    <state x="474" y="155" width="962" height="803" key="new project wizard" timestamp="1605987966780">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="693" y="302" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.3840.1053@0.27.3840.1053" timestamp="1605900487033" />
-    <state x="743" y="311" width="424" height="491" key="FileChooserDialogImpl" timestamp="1605900664743">
-      <screen x="0" y="27" width="3840" height="1053" />
-    </state>
-    <state x="743" y="311" width="424" height="491" key="FileChooserDialogImpl/0.27.3840.1053@0.27.3840.1053" timestamp="1605900664743" />
+    <state x="474" y="155" width="962" height="803" key="new project wizard/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1605987966780" />
   </component>
 </project>
